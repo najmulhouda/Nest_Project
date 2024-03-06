@@ -1,15 +1,18 @@
-import { Controller, HttpCode, HttpStatus, Post, Req } from '@nestjs/common';
-import { Request } from 'express';
-import { of } from 'rxjs';
+import { Body, Controller, Post } from '@nestjs/common';
 
-@Controller('users')
-export class UsersConttroller {
-  @Post('/profile')
-  @HttpCode(HttpStatus.RESET_CONTENT)
-  getProfile(@Req() req: Request) {
-    console.log(req);
-    return of({
-      moye: 'moye',
-    });
+interface VideoDTO {
+  name: string;
+  tag: string;
+  date: Date;
+}
+
+@Controller('/users')
+export class UsersController {
+  @Post('video')
+  addVideo(@Body() requestData: VideoDTO) {
+    console.log(requestData.name, requestData.tag, requestData.date);
+    return {
+      success: true,
+    };
   }
 }

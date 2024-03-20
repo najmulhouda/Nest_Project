@@ -3,7 +3,5 @@ import { UsersStore } from './users.store';
 
 @Controller('/users')
 export class UsersController {
-  constructor(private store: UsersStore) {
-    console.log(this.store);
-  }
+  constructor(private store: UsersStore) {}
 }

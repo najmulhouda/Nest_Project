@@ -21,5 +21,3 @@ export class TaskStatusValidationPipe implements PipeTransform {
     return idx !== -1;
   }
 }
-//database connection problem
-//pgadmin not connected

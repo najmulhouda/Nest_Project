@@ -16,11 +16,11 @@ import { GetTasksFilterDto } from './dto/get-task-filter';
 import { TaskStatusValidationPipe } from './pipes/task-status-validation.pipe';
 import { TaskStatus } from './task-status.enum';
 import { Task } from './task.entity';
-import { TaskService } from './task.service';
+import { TasksService } from './task.service';
 
 @Controller('tasks')
 export class TaskController {
-  constructor(private taskService: TaskService) {}
+  constructor(private taskService: TasksService) {}
 
   @Get()
   getAllTask(@Query(ValidationPipe) filterDto: GetTasksFilterDto) {

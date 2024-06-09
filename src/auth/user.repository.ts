@@ -1,5 +1,5 @@
 //repository part
-import { AuthCredentialDto } from 'src/config/dto/auth-credential.dto';
+import { AuthCredentialDto } from 'src/auth/dto/auth-credential.dto';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
 

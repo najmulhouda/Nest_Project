@@ -2,7 +2,7 @@
 
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { AuthCredentialDto } from 'src/config/dto/auth-credential.dto';
+import { AuthCredentialDto } from 'src/auth/dto/auth-credential.dto';
 import { UserRepository } from './user.repository';
 
 @Injectable()

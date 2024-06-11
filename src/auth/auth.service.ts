@@ -27,7 +27,4 @@ export class AuthService {
     user.password = password;
     await user.save();
   }
-  // async signUp(authCredentialsDto: AuthCredentialDto): Promise<void> {
-  //    this.userRepository.signUp(authCredentialsDto);
-  // }
 }

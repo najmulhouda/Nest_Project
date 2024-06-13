@@ -17,11 +17,11 @@ export class AuthService {
   async signUp(authCredentialsDto: AuthCredentialDto): Promise<void> {
     const { username, password } = authCredentialsDto;
 
-    const exists = this.findOne({ username });
+    // const exists = this.findOne({ username });
 
-    if (exists) {
-      //throw new Error('User already exists');
-    }
+    // if (exists) {
+    //   //throw new Error('User already exists');
+    // }
     const user = new User();
     user.username = username;
     user.password = password;

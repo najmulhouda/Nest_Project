@@ -1,6 +1,10 @@
 //auth service
 
-import { Injectable } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AuthCredentialDto } from 'src/auth/dto/auth-credential.dto';
 import { Repository } from 'typeorm';
@@ -14,7 +18,7 @@ export class AuthService {
     private userRepository: Repository<User>,
   ) {}
 
-  async signUp(authCredentialsDto: AuthCredentialDto): Promise<void> {
+  async signUp(authCredentialsDto: AuthCredentialDto): Promise<User> {
     const { username, password } = authCredentialsDto;
 
     // const exists = this.findOne({ username });
@@ -25,6 +29,19 @@ export class AuthService {
     const user = new User();
     user.username = username;
     user.password = password;
-    await user.save();
+
+    try {
+      await user.save();
+      return user;
+    } catch (error) {
+      // console.log(error.code);
+      if (error.code === '23505') {
+        // throw new Error('Username already exists');
+        throw new ConflictException('Username already exists');
+      } else {
+        throw new InternalServerErrorException();
+      }
+    }
+    // await user.save();
   }
 }

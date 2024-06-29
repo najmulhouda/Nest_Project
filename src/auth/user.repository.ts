@@ -1,13 +1,12 @@
-//repository part
+// src/auth/user.repository.ts
+
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
 
 export class UserRepository extends Repository<User> {
-  // async signUp(authCredentialsDto: AuthCredentialDto): Promise<void> {
-  //   const { username, password } = authCredentialsDto;
-  //   const user = new User();
-  //   user.username = username;
-  //   user.password = password;
-  //   await user.save();
-  // }
+  // get all user
+  // add user
+  // get user
+  // delete user
+  // update user
 }

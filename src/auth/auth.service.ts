@@ -10,11 +10,10 @@ import * as bcrypt from 'bcrypt';
 import { AuthCredentialDto } from 'src/auth/dto/auth-credential.dto';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
-import { UserRepository } from './user.repository';
 @Injectable()
 export class AuthService {
   constructor(
-    @InjectRepository(UserRepository)
+    @InjectRepository(User)
     private userRepository: Repository<User>,
   ) {}
 
@@ -39,7 +38,10 @@ export class AuthService {
       }
     }
   }
-
+  async signIn(authCredentialsDto: AuthCredentialDto): Promise<string> {
+    const { username, password } = authCredentialsDto;
+    const user = await this.userRepository.findOne({ username });
+  }
   private async hashPassword(password: string, salt: string): Promise<string> {
     return bcrypt.hash(password, salt);
   }

@@ -39,6 +39,7 @@ export class AuthService {
       }
     }
   }
+
   private async hashPassword(password: string, salt: string): Promise<string> {
     return bcrypt.hash(password, salt);
   }

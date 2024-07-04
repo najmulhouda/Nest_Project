@@ -1,4 +1,4 @@
-//controller part
+//controller
 import {
   Body,
   Controller,
